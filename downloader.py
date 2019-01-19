@@ -11,6 +11,7 @@ class Downloader:
     def _download(self, url):
         self._path_exists(self.path)
         r = requests.get(url)
+        # TODO: gérer les cas où la requête ne renvoie pas 200
         name = self._parse_url_for_name(url)
         print('Enregistrement de l''image dans le dossier: ' + str(self.path))
         with open(self.path + name, 'w+b') as file:
@@ -21,6 +22,7 @@ class Downloader:
         return name
 
     def _path_exists(self, path):
+        # TODO: gérer le cas où le path donné n'est pas valide (ex : /pope//..?)
         directory = os.path.dirname(path)
         if not os.path.exists(directory):
             os.makedirs(directory)
