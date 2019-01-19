@@ -5,13 +5,10 @@ from wallhaven_scraper import Wallhaven_scraper
 
 class elPope:
 
-    def __init__(self, keywords_file=None, path_to_files=None):
-        self.keywords = []
+    def __init__(self, keywords=config.DEFAULT_KEYWORDS, keywords_file=None, path_to_files=config.DEFAULT_PATH):
         self.scrapers = []
         self.use_keywords_file = keywords_file != None
         self.downloader = None  # add downloader class instance
-        if not path_to_files:
-            self.path_to_files = config.DEFAULT_PATH
 
     def init_scrapers(self, keywords=None):
         self.scrapers.append(Wg_scraper(keywords))
@@ -33,6 +30,6 @@ class elPope:
 
 
 if __name__ == "__main__":
-    e = elPope()
+    e = elPope(keywords=[""])
     e.init_scrapers()
     e.run_all()

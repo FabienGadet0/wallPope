@@ -4,3 +4,4 @@ api pour wallhaven
 
 https://github.com/bibanon/BASC-py4chan
 api pour 4chan
+pip install basc-py4chan
