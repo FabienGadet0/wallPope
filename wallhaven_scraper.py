@@ -35,6 +35,9 @@ class Wallhaven_scraper(Scraper):
                 self.wallhaven_api.get_image_url(number))
         return images_url_list
 
+    def _c_grillay(self):
+        return self.url_list
+
     def run(self, pages):
         self.url_list = self._get_images_url()
 
