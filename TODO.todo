@@ -11,7 +11,7 @@ ElPope:
 SCRAPER :
     [] Class Scraper Abstract
     [] scraper /wg/ return [] urls
-    [] scraper wallhaven return [] urls
+    [x] scraper wallhaven return [] urls
 
 
 PLUS:

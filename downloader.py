@@ -1,10 +1,11 @@
 import requests
 import os
+import config
 
 
 class Downloader:
 
-    def __init__(self, path='./popeProperties/'):
+    def __init__(self, path=config.DEFAULT_PATH):
         self.data = []
         self.path = path
 
@@ -13,9 +14,12 @@ class Downloader:
         r = requests.get(url)
         # TODO: gérer les cas où la requête ne renvoie pas 200
         name = self._parse_url_for_name(url)
-        print('Enregistrement de l''image dans le dossier: ' + str(self.path))
         with open(self.path + name, 'w+b') as file:
             file.write(r.content)
+
+    def _download_from_list(self, url_list):
+        for url in url_list:
+            self._download(url)
 
     def _parse_url_for_name(self, url):
         name = url.rsplit('/', 1)[-1]
