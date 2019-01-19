@@ -1,5 +1,5 @@
 Telechargement:
-    [] Class qui telecharge.
+    [x] Class qui telecharge.
     [] Attribut path pour les fichiers a dl
     [] MultiThread
 
