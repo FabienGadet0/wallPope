@@ -1,0 +1,19 @@
+Telechargement:
+    [] Class qui telecharge.
+    [] Attribut path pour les fichiers a dl
+    [] MultiThread
+
+
+ElPope:
+    [] main Class qui execute tout
+    [] Liste de scraper a executer dans la main Class
+
+SCRAPER :
+    [] Class Scraper Abstract
+    [] scraper /hg/ return [] urls
+    [] scraper wallhaven return [] urls
+
+
+PLUS:
+    [] cron 1 fois par semaine sur heroku ?
+    [] Keywords fichier de conf
