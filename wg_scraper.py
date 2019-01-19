@@ -9,3 +9,6 @@ class Wg_scraper(Scraper):
 
     def run(self):
         print("wg_scraper")
+
+
+if __name__ == "__main__":

@@ -1,1 +1,1 @@
-DEFAULT_PATH = "./popeProperty/"
+DEFAULT_PATH = "./popeProperties/"
