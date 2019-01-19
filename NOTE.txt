@@ -1,2 +1,6 @@
 https://github.com/Goblenus/WallhavenApi 
 api pour wallhaven
+
+
+https://github.com/bibanon/BASC-py4chan
+api pour 4chan

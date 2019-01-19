@@ -5,8 +5,8 @@ Telechargement:
 
 
 ElPope:
-    [] main Class qui execute tout
-    [] Liste de scraper a executer dans la main Class
+    [x] main Class qui execute tout
+    [x] Liste de scraper a executer dans la main Class
 
 SCRAPER :
     [] Class Scraper Abstract
