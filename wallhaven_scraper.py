@@ -12,7 +12,7 @@ class Wallhaven_scraper(Scraper):
             username=username, password=password, verify_connection=True)
         self.downloader = Downloader()
 
-    # TODO: gérer résolutions, catégories , dans parameters....
+    # TODO: gérer résolutions, catégories , dans parameters et utiliser le fichier de config pour ça....
     def _get_images_url(self, parameters=None, pages=range(1, 5)):
         search_query = ''
         for keyword in self.keywords:
@@ -36,7 +36,7 @@ class Wallhaven_scraper(Scraper):
         return images_url_list
 
     def run(self, pages):
-        self._get_images_url()
+        self.url_list = self._get_images_url()
 
 
 if __name__ == "__main__":
