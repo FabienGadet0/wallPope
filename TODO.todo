@@ -1,7 +1,7 @@
 Telechargement:
     [x] Class qui telecharge.
     [x] Attribut path pour les fichiers a dl
-    [] MultiThread
+    [x] MultiThread
 
 
 ElPope:
@@ -12,8 +12,8 @@ SCRAPER :
     [x] Class Scraper Abstract
     [x] scraper /wg/ return [] urls
     [x] scraper wallhaven return [] urls
-    [] recherche pour keyword individuel
-    [] init nombre de page dependant du nombre de keywords
+    [x] recherche pour keyword individuel
+    [x] init nombre de page dependant du nombre de keywords
 
 PLUS:
     [] cron 1 fois par semaine sur heroku ?

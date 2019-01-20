@@ -1,7 +1,9 @@
-import requests
 import os
-import config
 import shutil
+
+import requests
+
+import config
 
 
 class Downloader:

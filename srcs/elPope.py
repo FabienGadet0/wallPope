@@ -1,13 +1,13 @@
-import sys
-
 import os
+import random
+import sys
+import timeit
+from multiprocessing.dummy import Pool as ThreadPool
+
 import config
 from downloader import Downloader
-from wg_scraper import Wg_scraper
 from wallhaven_scraper import Wallhaven_scraper
-import timeit
-import random
-from multiprocessing.dummy import Pool as ThreadPool
+from wg_scraper import Wg_scraper
 
 
 class elPope:

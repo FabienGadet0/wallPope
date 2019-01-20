@@ -1,8 +1,9 @@
-from scraper import Scraper
-import WallhavenApi
-import config
-from downloader import Downloader
 import math
+
+import config
+import WallhavenApi
+from downloader import Downloader
+from scraper import Scraper
 
 
 class Wallhaven_scraper(Scraper):
