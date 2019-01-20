@@ -1,3 +1,6 @@
+import sys
+
+import os
 import config
 from downloader import Downloader
 from wg_scraper import Wg_scraper
@@ -23,7 +26,6 @@ class elPope:
 
 
 # =================================== SETTER ==========================================
-
 
     def set_path_to_files(self, path):
         self.set_path_to_files = path
@@ -54,5 +56,4 @@ class elPope:
 
 
 if __name__ == "__main__":
-    elPope = elPope()
-    elPope.run_all()
+    print(os.path.dirname(sys.argv[0]))
