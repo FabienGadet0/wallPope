@@ -23,16 +23,24 @@ class Wallhaven_scraper(Scraper):
         for page in pages:
             images_numbers_list += self.wallhaven_api.get_images_numbers(
                 search_query=search_query, page=page)
-        print(str(len(images_numbers_list))+' matching images found')
+        print(str(len(images_numbers_list))' matching images found')
         self.url_list = self._get_url_from_images_numbers(
             images_numbers_list)
 
-    def _get_url_from_images_numbers(self, numbers_list):
+    def _get_url_from_images_numbers_SLOW(self, numbers_list):
         images_url_list = []
         print('Recovering urls...')
         for number in numbers_list:
             images_url_list.append(
                 self.wallhaven_api.get_image_url(number))
+        return images_url_list
+
+    def _get_url_from_images_numbers_FAST(self, numbers_list):
+        images_url_list = []
+        print('Recovering urls...')
+        for number in numbers_list:
+            images_url_list.append(config.WALLHAVEN_URL +
+                                   (number)+config.DEFAULT_EXT)
         return images_url_list
 
     def cest_grillay(self):
