@@ -1,23 +1,29 @@
 import config
+from downloader import Downloader
 from wg_scraper import Wg_scraper
 from wallhaven_scraper import Wallhaven_scraper
-from datetime import datetime
+import timeit
+import random
 
 
 class elPope:
 
     def __init__(self, keywords=config.DEFAULT_KEYWORDS, keywords_file=None, path_to_files=config.DEFAULT_PATH):
         self.scrapers = []
+        self.file_urls_to_download = []
         self.keywords = keywords
         self.use_keywords_file = keywords_file != None
-        self.downloader = None  # add downloader class instance
+        self.downloader = Downloader(path_to_files)
         self.init_scrapers()
+        self.timer = timeit.default_timer()
 
     def init_scrapers(self):
         self.scrapers.append(Wg_scraper(self.keywords))
         self.scrapers.append(Wallhaven_scraper(self.keywords))
 
+
 # =================================== SETTER ==========================================
+
 
     def set_path_to_files(self, path):
         self.set_path_to_files = path
@@ -26,14 +32,27 @@ class elPope:
         self.keywords = keywords
 
 # ===================================================================================
+    def get_list_of_urls(self, nb_max_urls=config.NB_MAX_URLS):
+        for grillepain in self.scrapers:
+            self.file_urls_to_download += (grillepain.cest_grillay())
+        if len(self.file_urls_to_download) > nb_max_urls:
+            random.shuffle(self.file_urls_to_download)
+            self.file_urls_to_download = self.file_urls_to_download[:nb_max_urls]
+
+    def start_downloads(self):
+        print('downloading ', len(self.file_urls_to_download), ' files')
+        for url in self.file_urls_to_download:
+            self.downloader.download_from_url(url)
+        print('finished in ', (timeit.default_timer() - self.timer), ' seconds')
 
     def run_all(self):
+        print('the keywords are :', str(self.keywords)[1:-1])
         for scraper in self.scrapers:
-            start = datetime.now()
             scraper.run()
-            print(datetime.now()-start)
+        self.get_list_of_urls()
+        self.start_downloads()
 
-    def ilyatropdegrillepainetquandilyatropdegrillepain(self):
-        for grillepain in self.scrapers:
-            print('-----------------------------------')
-            print(grillepain.cest_grillay())
+
+if __name__ == "__main__":
+    elPope = elPope()
+    elPope.run_all()
