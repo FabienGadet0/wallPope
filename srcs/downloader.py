@@ -27,9 +27,7 @@ class Downloader:
         with open(self.path + name, 'w+b') as file:
             file.write(request.content)
 
-    def _download_from_url(self, url, path=None):
-        if path:
-            self.path = path
+    def _download_from_url(self, url):
         self._save_in_file(self._get_request_from_url(url),
                            self._parse_url_for_name(url))
 
