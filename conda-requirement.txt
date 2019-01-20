@@ -1,7 +1,7 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: win-64
-astroid=2.1.0=py37_0
+# astroid=2.1.0=py37_0
 autopep8=1.4.3=py37_0
 beautifulsoup4=4.6.3=py37_0
 ca-certificates=2018.03.07=0
