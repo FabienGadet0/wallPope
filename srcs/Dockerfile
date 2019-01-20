@@ -10,4 +10,4 @@ WORKDIR /opt/webapp
 
 RUN conda install --file /tmp/conda-requirements.txt
 
-CMD gunicorn --bind 0.0.0.0:$PORT wsgi
+CMD ["python", "main.py"]
