@@ -6,7 +6,7 @@ FROM continuumio/miniconda3
 
 # RUN pip install -qr /tmp/requirements.txt
 
-ADD ./srcs /opt/webapp/
+ADD ./ /opt/webapp/
 WORKDIR /opt/webapp
 
 RUN conda install -c anaconda openssl beautifulsoup4

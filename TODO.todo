@@ -16,5 +16,6 @@ SCRAPER :
     [x] init nombre de page dependant du nombre de keywords
 
 PLUS:
+    [] deploy sur heroku
     [] cron 1 fois par semaine sur heroku ?
     [] Keywords fichier de conf

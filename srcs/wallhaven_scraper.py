@@ -39,7 +39,7 @@ class Wallhaven_scraper(Scraper):
             for page in range(1, self._get_pages_per_keyword()+1):
                 images_numbers_list += self.wallhaven_api.get_images_numbers(
                     search_query=keyword, page=page)
-            print(len(images_numbers_list), ' matching images found')
+            # print(len(images_numbers_list), ' matching images found')
             self.url_list = self._get_url_from_images_numbers(
                 images_numbers_list)
 
