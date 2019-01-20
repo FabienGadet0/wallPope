@@ -5,39 +5,37 @@ import basc_py4chan
 class Wg_scraper(Scraper):
 
     def __init__(self, keywords=None, boards='wg'):
+        self.keywords = keywords
         self.board_instances = basc_py4chan.get_boards(boards)
-        if keywords:
-            self.keywords = keywords
         self.threads = []
+        self.files_url = []
         self.boards = []
         for b in self.board_instances:
             self.boards.append(b)
 
     def get_threads(self):
         for board in self.boards:
-            threads_ids = board.get_all_thread_ids()
-            for thread_id in threads_ids:
-                t = board.get_thread(thread_id)
-                print(t.posts[0].subject)
+            threads = board.get_all_threads()
+            for t in threads:
                 if super().is_in_keywords(t.posts[0].subject, self.keywords):
-                    self.threads.append(board.name, t)
+                    # print("keyword found -> ",
+                        #   t.posts[0].subject, ' / ',  t.posts[0].url)
+                    self.threads.append(t)
 
     def get_files_url(self):
-        files_url = []
         for thread in self.threads:
-            files_url.append(thread.files())
-            print(files_url)
-        return files_url
+            thread.expand()
+            self.files_url.append(list(thread.files()))
 
     def run(self):
         self.get_threads()
-        f = self.get_files_url()
-        print(len(f))
-        for a in f:
-            print(a)
-        print("wg_scraper")
+        self.get_files_url()
+        print('run /wg/')
+
+    def cest_grillay(self):
+        return self.files_url
 
 
 if __name__ == "__main__":
-    w = Wg_scraper(['Nazi'])
+    w = Wg_scraper(['minimalist'])
     w.run()

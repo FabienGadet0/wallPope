@@ -1,2 +1,2 @@
 DEFAULT_PATH = "./popeProperties/"
-DEFAULT_KEYWORDS = ["Nazi"]
+DEFAULT_KEYWORDS = ["minimalist"]

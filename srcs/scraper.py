@@ -7,4 +7,7 @@ class Scraper:
         pass
 
     def is_in_keywords(self, keyword, keywords):
-        return keyword in keywords
+        return any(key in str(keyword).lower() for key in keywords)
+
+    def cestgrillay(self):
+        pass

@@ -24,7 +24,7 @@ class Wallhaven_scraper(Scraper):
             images_numbers_list += self.wallhaven_api.get_images_numbers(
                 search_query=search_query, page=page)
         print(str(len(images_numbers_list))+' matching images found')
-        return self._get_url_from_images_numbers(
+        self.url_list = self._get_url_from_images_numbers(
             images_numbers_list)
 
     def _get_url_from_images_numbers(self, numbers_list):
@@ -35,11 +35,11 @@ class Wallhaven_scraper(Scraper):
                 self.wallhaven_api.get_image_url(number))
         return images_url_list
 
-    def _c_grillay(self):
+    def cest_grillay(self):
         return self.url_list
 
-    def run(self, pages):
-        self.url_list = self._get_images_url()
+    def run(self, pages=None):
+        self._get_images_url()
 
 
 if __name__ == "__main__":
