@@ -7,12 +7,14 @@ from wg_scraper import Wg_scraper
 from wallhaven_scraper import Wallhaven_scraper
 import timeit
 import random
+from multiprocessing.dummy import Pool as ThreadPool
 
 
 class elPope:
 
     def __init__(self, keywords=config.DEFAULT_KEYWORDS, keywords_file=None, path_to_files=config.DEFAULT_PATH):
         self.scrapers = []
+        self.threads = ThreadPool()
         self.file_urls_to_download = []
         self.keywords = keywords
         self.use_keywords_file = keywords_file != None
@@ -27,6 +29,7 @@ class elPope:
 
 # =================================== SETTER ==========================================
 
+
     def set_path_to_files(self, path):
         self.set_path_to_files = path
 
@@ -34,25 +37,34 @@ class elPope:
         self.keywords = keywords
 
 # ===================================================================================
-    def get_list_of_urls(self, nb_max_urls=config.NB_MAX_URLS):
+    def _get_list_of_urls(self, nb_max_urls=config.NB_MAX_URLS):
         for grillepain in self.scrapers:
             self.file_urls_to_download += (grillepain.cest_grillay())
+        random.shuffle(self.file_urls_to_download)
         if len(self.file_urls_to_download) > nb_max_urls:
-            random.shuffle(self.file_urls_to_download)
             self.file_urls_to_download = self.file_urls_to_download[:nb_max_urls]
 
-    def start_downloads(self):
+    def init_threads(self, nb_threads=4):
+        self.threads = ThreadPool(nb_threads)
+
+    def _start_downloads(self):
         print('downloading ', len(self.file_urls_to_download), ' files')
-        for url in self.file_urls_to_download:
-            self.downloader.download_from_url(url)
+        self.threads.map(self.downloader.download_from_url,
+                         self.file_urls_to_download)
+
+    def _wait_for_finishing(self):
+        self.threads.close()
+        self.threads.join()
+
         print('finished in ', (timeit.default_timer() - self.timer), ' seconds')
 
     def run_all(self):
         print('the keywords are :', str(self.keywords)[1:-1])
         for scraper in self.scrapers:
             scraper.run()
-        self.get_list_of_urls()
-        self.start_downloads()
+        self._get_list_of_urls()
+        self._start_downloads()
+        self._wait_for_finishing()
 
 
 if __name__ == "__main__":
