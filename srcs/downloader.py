@@ -9,21 +9,29 @@ class Downloader:
         self.data = []
         self.path = path
 
-    def _download(self, url):
+    def _get_request_from_url(self, url):
         self._path_exists(self.path)
         r = requests.get(url)
-        # TODO: gérer les cas où la requête ne renvoie pas 200
-        name = self._parse_url_for_name(url)
-        with open(self.path + name, 'w+b') as file:
-            file.write(r.content)
+        if r.status_code == 200:
+            return r
 
     def _download_from_list(self, url_list):
         for url in url_list:
-            self._download(url)
+            self._download_from_url(url)
 
     def _parse_url_for_name(self, url):
         name = url.rsplit('/', 1)[-1]
         return name
+
+    def _save_in_file(self, request, name):
+        with open(self.path + name, 'w+b') as file:
+            file.write(request.content)
+
+    def _download_from_url(self, url, path=None):
+        if path:
+            self.path = path
+        self._save_in_file(self._get_request_from_url(url),
+                           self._parse_url_for_name(url))
 
     def _path_exists(self, path):
         # TODO: gérer le cas où le path donné n'est pas valide (ex : /pope//..?)
@@ -35,5 +43,5 @@ class Downloader:
 if __name__ == "__main__":
     print('main')
     d = Downloader()
-    d._download(
+    d._download_from_url(
         'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png')
