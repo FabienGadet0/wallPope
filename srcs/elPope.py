@@ -12,12 +12,13 @@ from multiprocessing.dummy import Pool as ThreadPool
 
 class elPope:
 
-    def __init__(self, keywords=config.DEFAULT_KEYWORDS, keywords_file=None, path_to_files=config.DEFAULT_PATH):
+    def __init__(self, keywords=config.DEFAULT_KEYWORDS, keywords_file=None,
+                 path_to_files=config.DEFAULT_PATH):
         self.scrapers = []
         self.threads = ThreadPool()
         self.file_urls_to_download = []
         self.keywords = keywords
-        self.use_keywords_file = keywords_file != None
+        self.use_keywords_file = keywords_file is not None
         self.downloader = Downloader(path_to_files)
         self.init_scrapers()
         self.timer = timeit.default_timer()
@@ -28,7 +29,6 @@ class elPope:
 
 
 # =================================== SETTER ==========================================
-
 
     def set_path_to_files(self, path):
         self.set_path_to_files = path
