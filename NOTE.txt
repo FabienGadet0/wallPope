@@ -5,3 +5,8 @@ api pour wallhaven
 https://github.com/bibanon/BASC-py4chan
 api pour 4chan
 pip install basc-py4chan
+
+
+
+pour chemin absolu 
+print(os.path.dirname(sys.argv[0]))
