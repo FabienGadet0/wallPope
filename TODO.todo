@@ -1,21 +1,24 @@
-Telechargement:
-    [x] Class qui telecharge.
-    [x] Attribut path pour les fichiers a dl
-    [x] MultiThread
+Archive:
+    Telechargement:
+        [x] Class qui telecharge.
+        [x] Attribut path pour les fichiers a dl
+        [x] MultiThread
 
 
-ElPope:
-    [x] main Class qui execute tout
-    [x] Liste de scraper a executer dans la main Class
+    ElPope:
+        [x] main Class qui execute tout
+        [x] Liste de scraper a executer dans la main Class
 
-SCRAPER :
-    [x] Class Scraper Abstract
-    [x] scraper /wg/ return [] urls
-    [x] scraper wallhaven return [] urls
-    [x] recherche pour keyword individuel
-    [x] init nombre de page dependant du nombre de keywords
+    SCRAPER :
+        [x] Class Scraper Abstract
+        [x] scraper /wg/ return [] urls
+        [x] scraper wallhaven return [] urls
+        [x] recherche pour keyword individuel
+        [x] init nombre de page dependant du nombre de keywords
 
 PLUS:
-    [] deploy sur heroku
-    [] cron 1 fois par semaine sur heroku ?
-    [] Keywords fichier de conf
+[] flask api
+[] deploy sur heroku avec docker
+[] drive wrapper
+[] cron 1 fois par semaine sur heroku ?
+[] Keywords fichier de conf
