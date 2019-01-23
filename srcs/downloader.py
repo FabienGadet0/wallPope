@@ -10,7 +10,11 @@ class Downloader:
 
     def __init__(self, path=config.DEFAULT_PATH):
         self.data = []
-        self.path = path
+        if path.endswith('/'):
+            self.path = path + "popeProperties/"
+        else:
+            print('Incorrect path, default path is used instead')
+            self.path = config.DEFAULT_PATH + "popeProperties/"
         self._create_dir(self.path)
 
     def _get_request_from_url(self, url):
@@ -46,3 +50,4 @@ class Downloader:
         if os.path.exists(path):
             shutil.rmtree(path)
         os.makedirs(path)
+        print("Created files at " + path)
