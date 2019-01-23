@@ -2,7 +2,6 @@ import math
 
 import config
 import WallhavenApi
-from downloader import Downloader
 from scraper import Scraper
 
 
@@ -13,7 +12,6 @@ class Wallhaven_scraper(Scraper):
         self.WALLHAVEN_URL_RECOVERED_GOAL = 500
         self.wallhaven_api = WallhavenApi.WallhavenApi(
             username=username, password=password, verify_connection=True)
-        self.downloader = Downloader()
         self.url_list = []
 
     def _url_fast_mode(self, nb):
