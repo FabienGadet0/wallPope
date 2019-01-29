@@ -16,7 +16,10 @@ Archive:
         [x] recherche pour keyword individuel
         [x] init nombre de page dependant du nombre de keywords
 
+
+
 PLUS:
+[] 4chan api rajouter filtre sur la taille des images avec file_width / file_height : https://basc-py4chan.readthedocs.io/en/latest/library/file.html
 [] flask api
 [] deploy sur heroku avec docker
 [] drive wrapper
